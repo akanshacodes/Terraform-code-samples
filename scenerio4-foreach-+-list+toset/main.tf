@@ -4,6 +4,20 @@ resource "azurerm_resource_group" "foreach_list" {
   location = "West Europe"
 }
 
+#Scenario 1 — for_each + list(string)
+# Requirement
+
+# Suppose we have a requirement to create multiple Azure Resource Groups dynamically using Terraform.
+# User/team is providing RG names in a list variable from terraform.tfvars.
+
+# There may be duplicate values in the list.
+# So we use:
+
+# list(string) in variable
+# toset() in for_each
+# to remove duplicates and create only unique Resource Groups.
+
+#list is here that's why we are using toset function to convert list into set.
  # Using for_each to dynamically create multiple Azure Resource Groups
 
   # for_each iterates over only one collection at a time
